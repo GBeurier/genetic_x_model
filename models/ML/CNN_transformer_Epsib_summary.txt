@@ -1,0 +1,96 @@
+Model: "model_22"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_44 (InputLayer)          [(None, 31713, 1)]   0           []                               
+                                                                                                  
+ conv1d_216 (Conv1D)            (None, 7925, 128)    2176        ['input_44[0][0]']               
+                                                                                                  
+ conv1d_217 (Conv1D)            (None, 1980, 64)     65600       ['conv1d_216[0][0]']             
+                                                                                                  
+ max_pooling1d_21 (MaxPooling1D  (None, 989, 64)     0           ['conv1d_217[0][0]']             
+ )                                                                                                
+                                                                                                  
+ reshape_19 (Reshape)           (None, 1, 63296)     0           ['max_pooling1d_21[0][0]']       
+                                                                                                  
+ multi_head_attention_43 (Multi  (None, 1, 63296)    129695040   ['reshape_19[0][0]',             
+ HeadAttention)                                                   'reshape_19[0][0]']             
+                                                                                                  
+ layer_normalization_71 (LayerN  (None, 1, 63296)    126592      ['multi_head_attention_43[0][0]']
+ ormalization)                                                                                    
+                                                                                                  
+ dropout_126 (Dropout)          (None, 1, 63296)     0           ['layer_normalization_71[0][0]'] 
+                                                                                                  
+ tf.__operators__.add_70 (TFOpL  (None, 1, 63296)    0           ['dropout_126[0][0]',            
+ ambda)                                                           'reshape_19[0][0]']             
+                                                                                                  
+ conv1d_218 (Conv1D)            (None, 1, 64)        4051008     ['tf.__operators__.add_70[0][0]']
+                                                                                                  
+ dropout_127 (Dropout)          (None, 1, 64)        0           ['conv1d_218[0][0]']             
+                                                                                                  
+ conv1d_219 (Conv1D)            (None, 1, 63296)     4114240     ['dropout_127[0][0]']            
+                                                                                                  
+ layer_normalization_72 (LayerN  (None, 1, 63296)    126592      ['conv1d_219[0][0]']             
+ ormalization)                                                                                    
+                                                                                                  
+ tf.__operators__.add_71 (TFOpL  (None, 1, 63296)    0           ['layer_normalization_72[0][0]', 
+ ambda)                                                           'tf.__operators__.add_70[0][0]']
+                                                                                                  
+ multi_head_attention_44 (Multi  (None, 1, 63296)    129695040   ['tf.__operators__.add_71[0][0]',
+ HeadAttention)                                                   'tf.__operators__.add_71[0][0]']
+                                                                                                  
+ layer_normalization_73 (LayerN  (None, 1, 63296)    126592      ['multi_head_attention_44[0][0]']
+ ormalization)                                                                                    
+                                                                                                  
+ dropout_128 (Dropout)          (None, 1, 63296)     0           ['layer_normalization_73[0][0]'] 
+                                                                                                  
+ tf.__operators__.add_72 (TFOpL  (None, 1, 63296)    0           ['dropout_128[0][0]',            
+ ambda)                                                           'tf.__operators__.add_71[0][0]']
+                                                                                                  
+ multi_head_attention_45 (Multi  (None, 1, 63296)    129695040   ['tf.__operators__.add_72[0][0]',
+ HeadAttention)                                                   'tf.__operators__.add_71[0][0]']
+                                                                                                  
+ layer_normalization_74 (LayerN  (None, 1, 63296)    126592      ['multi_head_attention_45[0][0]']
+ ormalization)                                                                                    
+                                                                                                  
+ dropout_129 (Dropout)          (None, 1, 63296)     0           ['layer_normalization_74[0][0]'] 
+                                                                                                  
+ tf.__operators__.add_73 (TFOpL  (None, 1, 63296)    0           ['dropout_129[0][0]',            
+ ambda)                                                           'tf.__operators__.add_72[0][0]']
+                                                                                                  
+ conv1d_220 (Conv1D)            (None, 1, 64)        4051008     ['tf.__operators__.add_73[0][0]']
+                                                                                                  
+ dropout_130 (Dropout)          (None, 1, 64)        0           ['conv1d_220[0][0]']             
+                                                                                                  
+ conv1d_221 (Conv1D)            (None, 1, 63296)     4114240     ['dropout_130[0][0]']            
+                                                                                                  
+ layer_normalization_75 (LayerN  (None, 1, 63296)    126592      ['conv1d_221[0][0]']             
+ ormalization)                                                                                    
+                                                                                                  
+ tf.__operators__.add_74 (TFOpL  (None, 1, 63296)    0           ['layer_normalization_75[0][0]', 
+ ambda)                                                           'tf.__operators__.add_73[0][0]']
+                                                                                                  
+ flatten_52 (Flatten)           (None, 63296)        0           ['tf.__operators__.add_74[0][0]']
+                                                                                                  
+ dense_131 (Dense)              (None, 512)          32408064    ['flatten_52[0][0]']             
+                                                                                                  
+ reshape_20 (Reshape)           (None, 512, 1)       0           ['dense_131[0][0]']              
+                                                                                                  
+ conv1d_222 (Conv1D)            (None, 505, 128)     1152        ['reshape_20[0][0]']             
+                                                                                                  
+ conv1d_223 (Conv1D)            (None, 498, 32)      32800       ['conv1d_222[0][0]']             
+                                                                                                  
+ max_pooling1d_22 (MaxPooling1D  (None, 249, 32)     0           ['conv1d_223[0][0]']             
+ )                                                                                                
+                                                                                                  
+ flatten_53 (Flatten)           (None, 7968)         0           ['max_pooling1d_22[0][0]']       
+                                                                                                  
+ dense_132 (Dense)              (None, 32)           255008      ['flatten_53[0][0]']             
+                                                                                                  
+ dense_133 (Dense)              (None, 1)            33          ['dense_132[0][0]']              
+                                                                                                  
+==================================================================================================
+Total params: 438,813,409
+Trainable params: 438,813,409
+Non-trainable params: 0
+__________________________________________________________________________________________________
